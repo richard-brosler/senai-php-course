@@ -109,38 +109,6 @@ $tabelaIR = array([   0.00, 1903.98, 0.00,   0.00],
                   [2826.66, 3751.05, 15.00, 354.80],
                   [3751.06, 4664.68, 22.50, 636.13],
                   [4664.68, 99999999999999999, 27.50, 869.36]);
-
-if ($salarioBase<=1100.00) 
-  $vlrfx01=$salarioBase*0.075;
-else 
-  $vlrfx01=(1100-0)*0.075;
-//1.100,01 | 2.203,48  
-if ($salarioBase>1100.00 && $salarioBase<=2203.48) 
-  $vlrfx02=($salarioBase-1100.00)*0.090;
-else if ($salarioBase>2203.48)
-  $vlrfx02=(2203.48-1100)*0.090;
-//| 2.203,49 | 3.305,22 | 12,00% |
-if ($salarioBase>2203.48 && $salarioBase<=3305.22) 
-  $vlrfx03=($salarioBase-2203.48)*0.12;
-else if ($salarioBase>3305.22)
-  $vlrfx03=(3305.22-2203.48)*0.12;
-//| 3.305,23 | 6.433,57 | 14,00% |
-if ($salarioBase>3305.22 && $salarioBase<=6433.57) 
-  $vlrfx04=($salarioBase-3305.22)*0.14;
-else if ($salarioBase>6433.57)
-  $vlrfx04=(6433.57-3305.22)*0.14;
-//Calcular o INSS
-$inssValor=round($vlrfx01+$vlrfx02+$vlrfx03+$vlrfx04,2);
-  //Calcular o IRRF
-$irrfBase=$salarioBase-$inssValor-($numDependentes * $valorDependente );
-//Utilizando laço de repetição
-for($i=0;$i<5;$i++){
-  $faixa=$tabelaIR[$i];
-  if ($irrfBase>=$faixa[0] && $irrfBase<=$faixa[1]){
-    $irrfValor=round($irrfBase * $faixa[2] / 100.00 - $faixa[3],2);
-    break;
-  }
-}
 ?>
   <!-- Término do programa PHP -->
   <div class="container-md">
